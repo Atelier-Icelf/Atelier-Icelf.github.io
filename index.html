@@ -8,7 +8,7 @@ header-img: assets/img/background.jpg
 {% include header.html %}
 
 <body>
-<script src="\assets\js\love.js"></script> <!-- 小红心 -->
+<script src="\dev\js\love.js"></script> <!-- 小红心 -->
 </body>
 
 <div
@@ -21,7 +21,6 @@ header-img: assets/img/background.jpg
 </div>
 
 <main class="g-container home-content">
-     <iframe src="https://cloud.mokeyjay.com/pixiv"  frameborder="0"  style="width:360px; height:380px;" style="float:left"></iframe>
 	<div class="article-list">
         {% for post in paginator.posts %}
             <article class="article-item">
@@ -42,7 +41,8 @@ header-img: assets/img/background.jpg
                     {% endif %}
                 </section>
                 <footer class="post-meta">
-                    <div class="post-tags">
+                    <iframe src="https://cloud.mokeyjay.com/pixiv"  frameborder="0"  style="width:360px; height:380px;" style="float:left"></iframe>
+					<div class="post-tags">
                         {% if post.tags.size > 0 %}
                             {% for tag in post.tags  %}
                             <a href={{ "tags.html#" | append: tag | relative_url }} class="post-tag">{{ tag }}</a>
