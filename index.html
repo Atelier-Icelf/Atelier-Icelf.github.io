@@ -1,71 +1,105 @@
 ---
 layout: default
-menu: home
-css: ['index.css', 'sidebar-popular-repo.css']
-js: ['autoload.js']
+home-title: 冰精工房
+description: —— 无名的小憩之地 ——
+header-img: assets/img/background.jpg
 ---
-<audio src="http://music.163.com/song/media/outer/url?id=33051800.mp3"  autoplay="autoplay" loop="loop">
-？害搁这用老浏览器网上冲浪呢，不支持音乐播放
-</audio>
-<body>
-<script type="text/javascript" color="255,255,255" pointColor="144,238,144" opacity='0.9' zIndex="1" count="165" src="\assets\js\canvas-nest.js"></script> <!-- 多边形粒子特效 -->
-<script src="\assets\js\love.js"></script> <!-- 小红心 -->
-</body>
-<section class="jumbotron">
-    <div class="container">
-        <h1>{{ site.title }}</h1>
-        <div id="jumbotron-meta-info">
-            <span class="meta-info">
-                <span class="octicon octicon-location"></span>
-                {{ site.location }}
-            </span>
-            <span class="meta-info hvr-grow">
-                <span class="octicon octicon-organization"></span>
-                <a href="{{ site.company_url }}" target="_blank">{{ site.company }}</a>
-            </span>
-            <span class="meta-info hvr-grow">
-                <span class="octicon octicon-mark-github"></span>
-                <a href="{{ site.github_url }}" target="_blank">@{{ site.name }}</a>
-            </span>
-        </div>
+
+{% include header.html %}
+
+<div
+    class="g-banner home-banner {{ site.theme-color | prepend: 'banner-theme-' }}"
+    data-theme="{{ site.theme-color }}"
+    style="{% if page.header-img %}background: url({{ page.header-img | relative_url }}) no-repeat center center; background-size: cover;{% endif %}"
+>
+    <h2>{{ page.home-title }}</h2>
+    <h3>{{ page.description }}</h3>
+</div>
+
+<main class="g-container home-content">
+    <div class="article-list">
+        {% for post in paginator.posts %}
+            <article class="article-item">
+                {% if post.cover %}
+                <div class="post-cover">
+                    <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}"></a>
+                    <img src="{{ post.cover | relative_url }}" href="{{ post.url | relative_url }}" alt="">
+                </div>
+                {% endif %}
+                <section class="post-preview">
+                    <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}"></a>
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    {% if post.subtitle %}
+                    <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+                    {% endif %}
+                    {% if post.subtitle.size==0 or post.subtitle==nil %}
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 126}}</p>
+                    {% endif %}
+                </section>
+                <footer class="post-meta">
+                    <div class="post-tags">
+                        {% if post.tags.size > 0 %}
+                            {% for tag in post.tags  %}
+                            <a href={{ "tags.html#" | append: tag | relative_url }} class="post-tag">{{ tag }}</a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <time class="post-date" datetime="{{ post.date | date:"%y-%m-%d" }}">{{ post.date | date_to_string }}</time>
+                </footer>
+            </article>
+        {% endfor %}
+
+        {% if paginator.total_pages > 1 %}
+            {% include pageNav.html %}
+        {% endif %}
+
     </div>
-</section>
-<section class="content container">
 
-    <div class="row">
-        <iframe src="https://cloud.mokeyjay.com/pixiv"  frameborder="0"  style="width:360px; height:380px;" style="float:left"></iframe>
+    <aside class="g-sidebar-wrapper">
+        <div class="g-sidebar">
+            <section class="author-card">
+                <div class="avatar">
+                    <img src="{{ site.avatar | relative_url }}" alt="">
+                </div>
+                <div class="author-name" rel="author">{{ site.author }}</div>
+                <div class="bio">
+                    <p>{{ site.bio }}</p>
+                </div>
+                {% if site.sns.size > 0 %}
+                <ul id="sns-links" class="sns-links">
+                    {% for s in site.sns %}
+                    <li>
+                        <a href="{{ s[1] }}" target="_blank">
+                            <i class="iconfont icon-{{ s[0] }}"></i>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </section>
 
-        <!-- Post List -->
-        <div class="col-md-8">
-            <ol class="post-list">
-                {% for post in paginator.posts %}
-                <li class="post-list-item">
-                    <h2 class="post-list-title">
-                        <a class="hvr-underline-from-center" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
-                    </h2>
-                    <p class="post-list-description">
-                        {{ post.excerpt | strip_html | strip }}
-                    </p>
-                    <p class="post-list-meta">
-                        <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
-                    </p>
-                </li>
+            {% if site.recommend-tags and site.tags.size>0 %}
+            <section class="tags-card">
+                {% for tag in site.tags %}
+                    {% if forloop.index > site.recommend-condition-size %}
+                        {% break %}
+                    {% endif %}
+                    <a href="{{ "tags.html#" | append: tag[0] | relative_url }}" class="tag">{{ tag[0]}}</a>
                 {% endfor %}
-            </ol>
-
-            <!-- Pagination -->
-            {% include pagination.html %}
-
-            <!-- Comments -->
-            {% include disqus-comments.html %}
-
+            </section>
+            {% endif %}
         </div>
 
-        <div class="col-md-4">
-            {% include sidebar-popular-repo.html %}
+        {% if site.search %}
+        <div class="search-card">
+            <input id="search_input" type="text" placeholder="Search..." autocomplete="off">
+            <i class="iconfont icon-search"></i>
+            <div class="search_result"></div>
         </div>
+        {% endif %}
 
-    </div>
+    </aside>
 
-</section>
+</main>
 
+{% include footer.html %}

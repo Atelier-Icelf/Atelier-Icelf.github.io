@@ -1,91 +1,90 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+# Site settings 配置站点
+title: '冰精工房'
+description: '无名者的小憩之处'
+keyword: '冰精工房,冷冽谷的琪露诺,游戏制作,随笔,个人'
+url: '' # your host
 
-# Site settings
-title: Atelier-Icelf
-name: 冰精工房
-email: csxy010317jack@qq.com
-location: 致远星
-company: 睿站
-company_url: https://space.bilibili.com/315312
-github_url: https://steamcommunity.com/id/cirnoandcirno/
-description: ...折返吧
-favicon: favicon.png # Image must be in assets/images
+# when build blog on server, if you don't need baseurl, you should leave this value blank.
+# 在服务器上建站时，如果你不需要子域名，请将这一格留空
+# if you're using GitHub Pages, set baseurl to your blog's .
+# 如果你在使用 GitHub Pages, 请将 baseurl 设置为你的网址的子域名
+# for example, if your site is "kaeyleo.github.io", then this url should leave blank.
+# 例如，当你的域名是 "kaeyleo.github.io"  时，这个 url 需要留空
+# but if your created a repo named "myblog", and the site is "kaeyleo.github.io/myblog", change baseurl to '/myblog'
+# 但是，如果你创建了一个叫 "myblog" 的网站，此时网址会变成 "kaeyleo.github.io/myblog" ，这时再将 baseurl 设置为 '/myblog'
+baseurl: ''
 
-url: https://atelier-icelf.github.io/ # the base hostname & protocol for your site
+# Navigation links
+nav:
+  home: '/'
+  tags: '/tags.html'
+  gallery: '/gallery.html'
+  about: '/about.html'
 
-## Gem
-gems:
-  - jekyll-paginate
-  - jekyll-geo-pattern
-  - rouge
-  - kramdown
-  - jekyll-github-metadata
+
+# Footer
+footer:
+  since: 2020
+
+# Author 配置博主信息
+# author: '廖柯宇'
+# nickname: '悟空'
+# bio: '前端开发者，热爱技术&设计，简单乐观爱创造'
+# avatar: '/assets/img/profile.png'
+
+# Search
+search: true
+
+# Night mode
+nightMode: true
+
+# Comments 评论功能
+comments:
+  disqus: false
+  disqus_url: 'https://liaokeyu.disqus.com/embed.js'
+
+# MathJax 公式支持 by Ray-Eldath
+mathjax: true
+
+# Share
+social-share: true
+social-share-items: ['wechat', 'weibo', 'douban', 'twitter']
+
+# theme color 主题皮肤
+theme-color: 'default'  # pink or default
+
+# Post header background patterns (when the post no cover): circuitBoard, overlappingCircles, food, glamorous, ticTacToe, seaOfClouds
+postPatterns: 'circuitBoard'
+
+# SNS settings 配置社交网站
+# url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
+sns:
+  weibo: '//weibo.com/u/3199517533'
+  juejin: '//space.bilibili.com/315312'
+  instagram: '//cowlevel.net/people/kafuucirno'
+  github: '//github.com/Atelier-Icelf'
+
+# Tags 设置标签
+recommend-tags: false # whether or not display recommend-tags on the sidebar
+recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value
 
 # Build settings
+paginate: 6
+paginate_path: 'page:num'
+exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'README.md']
+
+# Markdown
 markdown: kramdown
 highlighter: rouge
-lsi:         false
-excerpt_separator: "\n\n"
-
-source:      .
-destination: ./_site
-
-quiet:    false
-defaults: []
-
 kramdown:
   input: GFM
-  enable_coderay: true
 
-# Disque
-disque: atelier-icelf.disqus.com
+# RSS
+RSS: false
 
-# Pagination
-paginate: 10
-paginate_path: 'page:num'
+# Permalink
+# See: https://github.com/kaeyleo/jekyll-theme-H2O/issues/35
+permalink: /:year/:month/:day/:title.html
 
-# Navigation
-navs:
-  -
-    href: /
-    label: 摸鱼部
-
-  -
-    href: /open-source
-    label: 仓储部
-
-  -
-    href: /blog
-    label: 统计部
-
-  -
-    href: /bookmark
-    label: 画廊
-
-  -
-    href: /about
-    label: 湖畔
-
-# Sidebar to show popular repo
-side_bar_repo_limit: 5 # Number of repos to show
-
-# Google Analytics
-analytics :
-  provider : google
-  google :
-      tracking_id : 'UA-72165600-1'
-
-
-# For about.html. Fell free to create your own!
-skill_software_keywords: [Photoshop,RpgMakerXP,RpgMkaerVXace,RpgMakerMV,AdobePremiere,Vegas]
-skill_mobile_app_keywords: [摸鱼,扯淡,自闭,缝合怪本当上手]
-
-# skill_software_keywords: [Java, C, C++, Qt, Python, MySQL, Oracle, SQLite, PL/SQL, Design Patterns]
-# skill_j2ee_keywords: [Spring, Struct, Hibernet, MyBatis, JSP]
-# skill_web_keywords: [HTML, CSS, JS, JQuery, Ajax, AngularJS, NodeJS, ExpressJS, MongoDB, Redis, PHP, Symfony, Boostrap]
-# skill_mobile_app_keywords: [Android, Sketch UI Desgin]
+# Plugins
+plugins: [jekyll-paginate]
