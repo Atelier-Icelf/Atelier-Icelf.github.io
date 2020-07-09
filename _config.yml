@@ -1,7 +1,7 @@
 # Site settings 配置站点
-title: '冰精工房'
+title: 'Atelier-icelf'
 description: '无名者的小憩之处'
-keyword: '冰精工房,冷冽谷的琪露诺,游戏制作,随笔,个人'
+keyword: '冰精工房,冷冽谷的琪露诺,游戏制作,随笔,个人,Atelier-icelf'
 url: '' # your host
 
 # when build blog on server, if you don't need baseurl, you should leave this value blank.
