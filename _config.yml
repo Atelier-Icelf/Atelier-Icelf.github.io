@@ -18,8 +18,7 @@ baseurl: ''
 nav:
   home: '/'
   tags: '/tags.html'
-  gallery: '/gallery.html'
-  about: '/about.html'
+
 
 
 # Footer

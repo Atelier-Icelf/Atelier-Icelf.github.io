@@ -7,6 +7,10 @@ header-img: assets/img/background.jpg
 
 {% include header.html %}
 
+<body>
+<script src="\assets\js\love.js"></script> <!-- 小红心 -->
+</body>
+
 <div
     class="g-banner home-banner {{ site.theme-color | prepend: 'banner-theme-' }}"
     data-theme="{{ site.theme-color }}"
@@ -17,7 +21,8 @@ header-img: assets/img/background.jpg
 </div>
 
 <main class="g-container home-content">
-    <div class="article-list">
+     <iframe src="https://cloud.mokeyjay.com/pixiv"  frameborder="0"  style="width:360px; height:380px;" style="float:left"></iframe>
+	<div class="article-list">
         {% for post in paginator.posts %}
             <article class="article-item">
                 {% if post.cover %}
