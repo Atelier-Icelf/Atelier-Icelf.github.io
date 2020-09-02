@@ -3,7 +3,13 @@
 	"model":"moc/model.moc",
     "textures":[
         "moc/pio/default-costume.png",
-        "moc/pio/sukumizu-costume-white.png"
+        "moc/pio/sukumizu-costume-white.png",
+        "moc/pio/witch-costume.png",
+        "moc/pio/tirami1-costume.png",
+        "moc/pio/sakura-costume.png",
+        "moc/pio/sakura-costume-navy.png",
+        "moc/pio/qipao-costume-pink.png",
+        "moc/pio/ribbon-dress-costume-red.png"
     ],
     "layout":{
 		"center_x":0.0,
