@@ -2,7 +2,8 @@
 	"version":"1.0.0",
 	"model":"moc/model.moc",
     "textures":[
-        "moc/pio/default-costume.png"
+        "moc/pio/default-costume.png",
+        "moc/sukumizu-costume-white.png"
     ],
     "layout":{
 		"center_x":0.0,
